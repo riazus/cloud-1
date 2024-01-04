@@ -1,0 +1,48 @@
+version: '3.6'
+services:
+  mysql:
+    build: ./mysql
+    env_file: mysql/.env
+    expose:
+      - 3306
+    volumes:
+      - db:/var/lib/mysql
+    restart: always
+    container_name: mysql
+  wordpress:
+    build: ./wordpress
+    env_file:
+    - mysql/.env
+    - wordpress/.env
+    expose:
+      - 5000
+    volumes:
+      - ws:/var/www
+    depends_on:
+      - mysql
+    restart: always
+    container_name: wordpress
+  phpmyadmin:
+    build: ./phpmyadmin
+    expose:
+      - 6000
+    volumes:
+      - ws:/var/www
+    depends_on:
+      - mysql
+    restart: always
+    container_name: phpmyadmin
+  nginx:
+    build: ./nginx
+    volumes:
+      - ws:/var/www
+    ports:
+      - 80:80
+      - 443:443
+      - 8080:8080
+    depends_on:
+      - wordpress
+    container_name: nginx
+volumes:
+  ws:
+  db:
