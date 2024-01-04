@@ -1,0 +1,22 @@
+- name: Bulid nginx Image
+  docker_image:
+    name: nginx
+    path: /rusmanov/Dockerfiles/nginx
+    buildargs:
+      HOST: "{{host_domain}}"
+
+- name: Run nginx Container
+  docker_container:
+    name: nginx
+    image: nginx
+    restart: yes
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - wp:/var/www/wordpress
+      - pma:/var/www/phpmyadmin
+    networks:
+      - name: local_network
+        ipv4_address: "192.0.69.5"
