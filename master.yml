@@ -1,4 +1,5 @@
 - name: Deploy wordpress Website
   hosts: webservers
   roles:
-    - services
+    - dependencies
+    - dockers

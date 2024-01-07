@@ -1,0 +1,2 @@
+- name: Create && Run Dockerfiles
+  command: docker compose up -f /home/rusmanov/Dockerfiles/docker-compose.yml
