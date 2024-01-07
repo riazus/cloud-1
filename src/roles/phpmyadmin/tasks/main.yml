@@ -1,7 +1,9 @@
 - name: build phpMyAdmin Image
   docker_image:
     name: phpmyadmin
-    path: /rusmanov/Dockerfiles/phpmyadmin
+    source: build
+    build:
+      path: /rusmanov/Dockerfiles/phpmyadmin
 
 - name: Run phpMyAdmin Container
   docker_container:

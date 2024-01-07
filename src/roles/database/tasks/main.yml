@@ -1,7 +1,9 @@
 - name: build mySql Image
   docker_image:
     name: mysql
-    path: /rusmanov/Dockerfiles/mysql
+    source: build
+    build:
+      path: /rusmanov/Dockerfiles/mysql
 
 - name: Run mysql Container
   docker_container:

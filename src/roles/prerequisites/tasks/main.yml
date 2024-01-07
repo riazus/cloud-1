@@ -1,8 +1,8 @@
 - name: Create a local network
   docker_network:
     name: local_network
-    ipam_options:
-      subnet: '192.0.69.0/8'
+    ipam_config:
+      - subnet: "192.0.69.0/8"
 
 - name: Create a Persistent Volume for DataBase
   docker_volume:

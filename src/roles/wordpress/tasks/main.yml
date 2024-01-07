@@ -1,7 +1,9 @@
 - name: Build wordpress Image
   docker_image:
     name: wordpress
-    path: /rusmanov/Dockerfiles/wordpress
+    source: build
+    build:
+      path: /rusmanov/Dockerfiles/wordpress
 
 - name: Run Wordpress Container
   docker_container:

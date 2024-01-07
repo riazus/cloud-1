@@ -1,9 +1,11 @@
 - name: Bulid nginx Image
   docker_image:
     name: nginx
-    path: /rusmanov/Dockerfiles/nginx
-    buildargs:
-      HOST: "{{host_domain}}"
+    source: build
+    build:
+      path: /rusmanov/Dockerfiles/nginx
+      args:
+        HOST: "{{host_domain}}"
 
 - name: Run nginx Container
   docker_container:
